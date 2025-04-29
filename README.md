@@ -14,6 +14,6 @@ A simple and interactive quiz application built using HTML, CSS, and JavaScript.
 - **CSS** – Styling and layout  
 - **JavaScript** – Quiz logic and interactivity  
 
-## 📸 Screenshots
-*(Add screenshots of your app here if available)*  
+/* ## 📸 Screenshots
+*(Add screenshots of your app here if available)* */  
 
