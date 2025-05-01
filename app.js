@@ -57,23 +57,64 @@ var questions = [
   },
 ];
 
+const getQuest = document.getElementById("quest");
 const getQues = document.getElementById("ques");
-const getOpt1 = document.getElementById("opt1")
-const getOpt2 = document.getElementById("opt2")
-const getOpt3 = document.getElementById("opt3")
+const getOpt1 = document.getElementById("opt1");
+const getOpt2 = document.getElementById("opt2");
+const getOpt3 = document.getElementById("opt3");
+const getInp = document.getElementsByTagName("input");
+const getLabel = document.getElementsByTagName("label");
+const getBtn = document.getElementById("btn");
+
 let index = 0;
+let score = 0;
 
 const nextQuestion = () => {
-    if (index > questions.length - 1) {
-        
-        getOptions.innerText = ""
-    }else{
-        getQues.innerText = questions[index].question;
-        getOpt1.innerText = questions[index].option1
-        getOpt2.innerText = questions[index].option2
-        getOpt3.innerText = questions[index].option3
-        index++;
+  for (let i = 0; i < getInp.length; i++) {
+    getInp[i].checked = false;
+  }
+
+  if (index > questions.length - 1) {
+    Swal.fire({
+      title: "Good job!",
+      text: `Your score is ${score} out of ${questions.length}`,
+      icon: "success",
+      
     }
- 
+  );
+  reset()
+  } else {
+    checkAns()
+    getQues.innerText = questions[index].question;
+    getOpt1.innerText = questions[index].option1;
+    getOpt2.innerText = questions[index].option2;
+    getOpt3.innerText = questions[index].option3;
+    index++;
+    getQuest.innerText = `Question ${index} of ${questions.length}`;
+  }
+
+  getBtn.disabled = true;
 };
-nextQuestion()
+nextQuestion();
+
+function checkAns() {
+  for (let i = 0; i < getInp.length; i++) {
+    if (getInp[i].checked) {
+      if (index == 0) return;
+      if (getLabel[i].innerText == questions[index - 1].correctOption) {
+        score++;
+      }
+    }
+  }
+}
+console.log(score);
+
+const btnWork = () => {
+  getBtn.disabled = false;
+}
+
+function reset() {
+  index = 0;
+  score = 0;
+  nextQuestion();
+}

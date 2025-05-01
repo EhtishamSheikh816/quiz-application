@@ -11,27 +11,31 @@
       <div class="quiz-header">JavaScript QUIZ APP</div>
 
       <div>
-        <p class="question" id="ques"></p>
+        <p class="question" id="ques"> </p>
       </div>
-
+      
+      <p id="quest"> </p>
       <div class="options">
-        <label class="option">
-          <input type="radio" name="quiz" />
-          <span id="opt1"> </span>
-        </label>
-        <label class="option">
-          <input type="radio" name="quiz" />
-          <span id="opt2"> </span>
-        </label>
-        <label class="option">
-          <input type="radio" name="quiz" />
-          <span id="opt3"> </span>
-        </label>
+        <div class="option">
+          <input onclick="btnWork()" type="radio" name="quiz" id="inp1"/>
+          <label for="inp1" id="opt1"> </label>
+        </div>
+        <div class="option">
+          <input onclick="btnWork()" type="radio" name="quiz" id="inp2"/>
+          <label for="inp2" id="opt2"> </label>  
+        </div>
+        <div class="option">
+          <input onclick="btnWork()" type="radio" name="quiz" id="inp3"/>
+          <label for="inp3" id="opt3"> </label>
+        </div>
       </div>
 
-      <button class="next-btn" onclick="nextQuestion()">Next Question</button>
+      <button disabled class="next-btn" onclick="nextQuestion()" id="btn">
+        Next Question
+      </button>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="app.js"></script>
   </body>
 </html>
