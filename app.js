@@ -79,12 +79,10 @@ const nextQuestion = () => {
       title: "Good job!",
       text: `Your score is ${score} out of ${questions.length}`,
       icon: "success",
-      
-    }
-  );
-  reset()
+    });
+    reset();
   } else {
-    checkAns()
+    checkAns();
     getQues.innerText = questions[index].question;
     getOpt1.innerText = questions[index].option1;
     getOpt2.innerText = questions[index].option2;
@@ -94,6 +92,9 @@ const nextQuestion = () => {
   }
 
   getBtn.disabled = true;
+  getBtn.style.backgroundColor = " #818181";
+  getBtn.style.color = " #e1e1e1";
+  getBtn.style.cursor = "not-allowed";
 };
 nextQuestion();
 
@@ -111,7 +112,10 @@ console.log(score);
 
 const btnWork = () => {
   getBtn.disabled = false;
-}
+  getBtn.style.backgroundColor = " #333";
+  getBtn.style.color = " #f6f6f6";
+  getBtn.style.cursor = "pointer";
+};
 
 function reset() {
   index = 0;
