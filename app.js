@@ -70,6 +70,8 @@ let index = 0;
 let score = 0;
 
 const nextQuestion = () => {
+  checkAns();
+  
   for (let i = 0; i < getInp.length; i++) {
     getInp[i].checked = false;
   }
@@ -82,7 +84,6 @@ const nextQuestion = () => {
     });
     reset();
   } else {
-    checkAns();
     getQues.innerText = questions[index].question;
     getOpt1.innerText = questions[index].option1;
     getOpt2.innerText = questions[index].option2;
@@ -96,13 +97,14 @@ const nextQuestion = () => {
   getBtn.style.color = " #e1e1e1";
   getBtn.style.cursor = "not-allowed";
 };
-nextQuestion();
 
 function checkAns() {
   for (let i = 0; i < getInp.length; i++) {
     if (getInp[i].checked) {
       if (index == 0) return;
-      if (getLabel[i].innerText == questions[index - 1].correctOption) {
+      let sndHtm = getLabel[i].innerText 
+      let coreectOpt = questions[index - 1].correctOption
+      if (sndHtm == coreectOpt) {
         score++;
       }
     }
@@ -122,3 +124,5 @@ function reset() {
   score = 0;
   nextQuestion();
 }
+
+nextQuestion();
